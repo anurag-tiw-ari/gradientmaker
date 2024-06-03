@@ -39,12 +39,12 @@
             font-family: sans-serif;
             font-weight: 500;
         }
-        .btn1{
+        #btn1{
             color:rgb(220, 219, 219);
             background-color: rgb(30, 29, 29);
             
         }
-        .btn2{
+        #btn2{
             background-color: yellow;
         }
         .button{
@@ -66,7 +66,7 @@
             margin-left: 2rem;
             background-color: transparent;
             box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
-            color: rgb(224, 224, 225);
+            color: rgb(255, 255, 255);
         }
         @media (width<350px){
             .copycode{
@@ -79,13 +79,40 @@
 <body>
     <section>
         <div class="button">
-            <button class="btn btn1">#bab721</button>
-            <button class="btn btn2">#29c9ae</button>
+            <button class="btn" id="btn1">#bab721</button>
+            <button class="btn" id="btn2">#29c9ae</button>
         </div>
         <h2>Copy Your Code From Here</h2>
         <div class="copycode">
             background-image: linear-gradient(45deg,rgb(186, 183, 33),rgb(41, 201, 174));
         </div>
     </section>
+    <script>
+       let btn1=document.getElementById("btn1");
+       let btn2=document.getElementById("btn2");
+
+       function handleButton1()
+       {
+           let hexcode=Math.floor(Math.random()*16777216).toString(16);
+           hexcodestr="#"+hexcode;
+           console.log(hexcodestr);
+           btn1.textContent=hexcodestr;
+           document.querySelector("section").style.backgroundImage=`linear-gradient(45deg,${btn1.textContent},${btn2.textContent})`;
+           document.querySelector(".copycode").textContent=`background-image:linear-gradient(45deg,${btn1.textContent},${btn2.textContent})`;
+       }
+       function handleButton2()
+       {
+           let hexcode=Math.floor(Math.random()*16777216).toString(16);
+           hexcodestr="#"+hexcode;
+           console.log(hexcodestr);
+           btn2.textContent=hexcodestr;
+           document.querySelector("section").style.backgroundImage=`linear-gradient(45deg,${btn1.textContent},${btn2.textContent})`;
+           document.querySelector(".copycode").textContent=`background-image:linear-gradient(45deg,${btn1.textContent},${btn2.textContent})`;
+       }
+
+       btn1.addEventListener("click",handleButton1);
+       btn2.addEventListener("click",handleButton2);
+
+    </script>
 </body>
 </html>
